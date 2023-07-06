@@ -1,1 +1,95 @@
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDI1jbwcmwQheSsRYYxeMV2+29ndG1rbZKBNYaUsp9Um6oLkc7L6jKvRL1IpQwUQBVMk8hyZLkwvQo8K51W4A2tPDdkzretEDqV81Iqa5xnKL4weqJ992328GD2/mDixrg6NGZFyzdQFDDzIo7//FWWqXj9Jq1+Z04166hWEayYG32u9FX9bm7Iy94j9ZJ6P9yUHro3B8Ww15ewrPhXCPeliBbXYgIMo4Herd/7eyHcLUOr/DeAWP8GN5jxmEHvb1ATTSvPYYt3TxNYAUoZKloZV84gehBIsmca1421UcrdIsTDnz1pCH9VIcyXEnAMPG++3DNx2iQIvSpfYlU3QwuGty7oXnHd5kmmpWd9WL12NxmZoFiLzl0up8azduqOJ15OZ77Mb/PcPETVjV8aHWa9yDEjwmX12OGtke5dtQsO5H7k8/WFdfq9QjIDfbks+EXa3quXX1jspDTFP1B0ykkRrrv5vXPS9dsvqKvlVq/nVE3bW1IPwNpY6ol/EwD2T9JsvP+44HaQ/5u6ICS4uEl2hM0p5oolaANot39Uovjf2fBdNGqMlkN7fkzrOgrdto9SzzNK/mFcKbaQeV+l3AFv/c/MKNQcGwF4Q7oPvi3/waVPuYcJ+7+OrAw8e48WJITqZIN4dCcITxzOwS1+ynedCz/C7RjDTXOPPHX3GJe2lQ== origin_li@163.com
+
+
+sudo apt-get update
+
+之后用如下命令下载openssh-server
+sudo apt-get install openssh-server
+
+检查ssh服务开启状态
+ps -s | grep ssh
+
+启动ssh服务：
+#sudo /etc/init.d/ssh start
+
+停止ssh服务：
+#sudo /etc/init.d/ssh stop
+
+重启ssh服务：
+#sudo /etc/init.d/ssh restart
+
+
+
+The first line of the /etc/apt/sources.list file in Ubuntu represents the software repository URL from which your system fetches packages and updates. This line typically begins with the keyword "deb," which stands for "debian."
+
+The format of the first line is as follows:
+
+php
+Copy code
+deb <repository_url> <distribution> <components>
+<repository_url>: This represents the URL of the repository where the packages are hosted. It can be a direct URL or a mirror URL.
+<distribution>: This specifies the Ubuntu distribution codename or release name, such as "bionic," "focal," or "hirsute."
+<components>: These are the software components within the repository that you want to enable. Common components include "main," "universe," "restricted," and "multiverse."
+Here's an example of a typical first line in the sources.list file for the main Ubuntu repository:
+
+arduino
+Copy code
+deb http://archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse
+In this example:
+
+The repository URL is http://archive.ubuntu.com/ubuntu/.
+The distribution is focal, which corresponds to Ubuntu 20.04 LTS.
+The enabled components are main, restricted, universe, and multiverse.
+Additional lines in the sources.list file represent additional repositories or software sources enabled on your system. These lines follow the same format as the first line.
+
+It's important to have correctly configured and up-to-date repositories in your sources.list file to ensure you can install packages and receive updates for your Ubuntu system.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+If you are receiving the error message stating that the package "openssh-server" is not available and is referred to by another package, it could indicate an issue with the package repositories or sources on your Ubuntu system. Here are a few steps you can follow to resolve this:
+
+Update the package index:
+bash
+Copy code
+sudo apt update
+Clear the apt cache to ensure you have the latest package information:
+bash
+Copy code
+sudo apt clean
+Verify that your package repositories are correctly configured. Open the /etc/apt/sources.list file with a text editor like nano:
+bash
+Copy code
+sudo nano /etc/apt/sources.list
+Check if the lines starting with "deb" are uncommented (not preceded by a "#" symbol). If they are commented out, remove the "#" symbol. Save the file and exit the text editor.
+
+If you have made changes to the sources.list file, run the update command again:
+bash
+Copy code
+sudo apt update
+If the issue persists, it's possible that there is an issue with your package sources. You can try changing the package repository to a different one. You can use the "Software & Updates" application or edit the /etc/apt/sources.list file as mentioned above.
+
+After making any changes, run the update command again:
+
+bash
+Copy code
+sudo apt update
+Finally, try installing the SSH server using the command:
+bash
+Copy code
+sudo apt install openssh-server
+If the issue still persists or you encounter any specific error messages, please provide the exact error message, and I'll be glad to assist you further.
+
+
+
+
